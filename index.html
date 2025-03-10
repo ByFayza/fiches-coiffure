@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Cards - Coiffure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .flash-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 20px auto;
+            break-inside: avoid;
+        }
+        
+        .card-header {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .card-content {
+            padding: 15px;
+        }
+        
+        .card-content h3 {
+            color: #6a1b9a;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .card-content ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .card-content p {
+            margin-bottom: 10px;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+        
+        .image-container img {
+            width: 250px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: 10px auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: white;
+            padding: 10px;
+        }
+        
+        .highlight {
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+        
+        .category-title {
+            text-align: center;
+            color: #6a1b9a;
+            margin: 30px 0 15px 0;
+            font-size: 1.5em;
+            text-transform: uppercase;
+        }
+        
+        .sub-card {
+            background-color: #f9f0ff;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- STRUCTURE DU CHEVEU -->
+    <h2 class="category-title">Structure du Cheveu</h2>
+    
+    <div class="flash-card">
+        <div class="card-header">Définition du Follicule Pileux</div>
+        <div class="card-content">
+            <p>Le follicule pileux est une invagination tubulaire de l'épiderme dans le derme qui contient la racine du poil ou du cheveu.</p>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Structure du Follicule Pileux</div>
+        <div class="card-content">
+            <div class="image-container">
+                <img src="follicule-pileux.jpg" alt="Structure d'un poil">
+            </div>
+            <ul>
+                <li>Stratum corneum</li>
+                <li>Épiderme</li>
+                <li>Derme</li>
+                <li>Poil</li>
+                <li>Follicule pileux</li>
+                <li>Glande sébacée</li>
+                <li>Artère et Veine</li>
+                <li>Bulbe pileux</li>
+                <li>Papille</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Les Gaines du Follicule</div>
+        <div class="card-content">
+            <ul>
+                <li><span class="highlight">Gaine épithéliale externe (GEE)</span> : Enveloppe peu kératinisée constituée de l'épiderme</li>
+                <li><span class="highlight">Gaine épithéliale interne (GEI)</span> : Enveloppe kératinisée entre la GEE et la tige pilaire</li>
+                <li><span class="highlight">Gaine conjonctive</span> : Formée de collagène, entourant le follicule pileux</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Structure de la Tige Pilaire</div>
+        <div class="card-content">
+            <div class="image-container">
+                <img src="tige-capillaire.png" alt="Structure de la tige pilaire">
+            </div>
+            <ul>
+                <li>Cuticule (écailles)</li>
+                <li>Cortex</li>
+                <li>Cellule corticale</li>
+                <li>Moelle (medulla)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Composition de la Tige Pilaire</div>
+        <div class="card-content">
+            <p>Composition chimique de la kératine :</p>
+            <ul>
+                <li>Carbone : 50 à 60%</li>
+                <li>Oxygène : 25 à 30%</li>
+                <li>Azote : 8 à 12%</li>
+                <li>Hydrogène : 4 à 5%</li>
+                <li>Soufre : 2 à 4%</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CELLULES -->
+    <h2 class="category-title">Cellules du Cheveu</h2>
+
+    <div class="flash-card">
+        <div class="card-header">Les Cellules Matricielles</div>
+        <div class="card-content">
+            <p>Cellules souches situées dans la matrice du follicule pileux.</p>
+            <p>Processus de transformation :</p>
+            <ol>
+                <li>Division cellulaire</li>
+                <li>Différenciation</li>
+                <li>Kératinisation</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Types de Cellules</div>
+        <div class="card-content">
+            <ul>
+                <li><span class="highlight">Cellules cuticulaires</span> : Élaborent la cuticule du cheveu</li>
+                <li><span class="highlight">Cellules corticales</span> : Élaborent le cortex du cheveu</li>
+                <li><span class="highlight">Cellules médullaires</span> : Élaborent la moelle du cheveu</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Les Mélanocytes</div>
+        <div class="card-content">
+            <p>Cellules spécialisées situées dans la matrice du follicule pileux.</p>
+            <p><span class="highlight">Rôle</span> : Production de la mélanine, pigment responsable de la couleur des cheveux.</p>
+        </div>
+    </div>
+
+    <!-- SHAMPOINGS -->
+    <h2 class="category-title">Les Shampoings</h2>
+
+    <div class="flash-card">
+        <div class="card-header">Shampoing Simple ou Neutre</div>
+        <div class="card-content">
+            <ul>
+                <li>pH : Neutre (7)</li>
+                <li>Forme : Généralement liquide</li>
+                <li>Usage : Entretien courant</li>
+                <li>Formulation : Généralement liquide</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Shampoing Spécifique</div>
+        <div class="card-content">
+            <ul>
+                <li>pH : Variable (5 à 7)</li>
+                <li>Forme : Généralement crèmeuse</li>
+                <li>Usage : Types de cheveux spécifiques</li>
+                <li>Formulation : Tensio-actifs amphotères (+/-)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Shampoing Traitant</div>
+        <div class="card-content">
+            <ul>
+                <li>pH : Acide (5 à 6)</li>
+                <li>Forme : Généralement fluide en gel</li>
+                <li>Usage : Traitement des anomalies</li>
+                <li>Formulation : Tensio-actifs cationiques (+)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Agents du Shampoing</div>
+        <div class="card-content">
+            <ul>
+                <li><span class="highlight">Agents lavants</span> : Emprisonnent, décollent et entraînent les salissures</li>
+                <li><span class="highlight">Agents solvants</span> : Règlent la concentration et dissolvent les agents actifs</li>
+                <li><span class="highlight">Agents émulsionnants</span> : Évitent la séparation des composants gras et aqueux</li>
+                <li><span class="highlight">Agents conditionneurs</span> : Facilitent démêlage, coiffage et diminuent l'électricité statique</li>
+                <li><span class="highlight">Agents d'addition</span> : Améliorent caractéristiques et présentation (odeur, couleur, conservation)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- TENSIOACTIFS -->
+    <h2 class="category-title">Les Tensioactifs</h2>
+
+    <div class="flash-card">
+        <div class="card-header">Propriétés des Tensioactifs</div>
+        <div class="card-content">
+            <ul>
+                <li><span class="highlight">Moussante</span> : Capacité à se mélanger à l'air</li>
+                <li><span class="highlight">Mouillante</span> : Imprègne la surface de contact</li>
+                <li><span class="highlight">Antiredéposition</span> : Empêche les particules de se redéposer</li>
+                <li><span class="highlight">Émulsionnante</span> : Mélange les substances non miscibles</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Tensioactif Anionique (-)</div>
+        <div class="card-content">
+            <p><span class="highlight">Inconvénients</span> : Très détergent, rend les cheveux :</p>
+            <ul>
+                <li>Ternes</li>
+                <li>Difficiles à démêler</li>
+                <li>Électriques</li>
+            </ul>
+            <p><span class="highlight">Utilisé dans</span> : Shampoings doux ou neutres</p>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Tensioactif Cationique (+)</div>
+        <div class="card-content">
+            <p><span class="highlight">Avantages</span> :</p>
+            <ul>
+                <li>Apporte douceur</li>
+                <li>Apporte souplesse</li>
+                <li>Apporte brillance</li>
+                <li>Facilite le démêlage</li>
+            </ul>
+            <p><span class="highlight">Utilisé dans</span> : Shampoings traitants</p>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Tensioactif Amphotère (+ et -)</div>
+        <div class="card-content">
+            <p><span class="highlight">Avantages</span> :</p>
+            <ul>
+                <li>Bien toléré par la peau</li>
+                <li>Bien toléré par les cheveux</li>
+                <li>Ne pique pas les yeux</li>
+            </ul>
+            <p><span class="highlight">Utilisé dans</span> : Shampoings spécifiques</p>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Tensioactif Non Ionique (...)</div>
+        <div class="card-content">
+            <p><span class="highlight">Avantages</span> :</p>
+            <ul>
+                <li>Bon pouvoir émulsifiant</li>
+                <li>Bon pouvoir lavant</li>
+            </ul>
+            <p><span class="highlight">Inconvénient</span> : Pouvoir moussant très faible</p>
+            <p><span class="highlight">Utilisé dans</span> : Shampoings techniques</p>
+        </div>
+    </div>
+
+    <div class="flash-card">
+        <div class="card-header">Structure Moléculaire Tensioactive</div>
+        <div class="card-content">
+            <div class="sub-card">
+                <p><span class="highlight">Tête polaire</span> : Partie hydrophile (aime l'eau)</p>
+                <p><span class="highlight">Queue apolaire</span> : Partie lipophile (aime les corps gras)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add new section for Anomalies -->
+    <h2 class="category-title">Les Anomalies du Cuir Chevelu</h2>
+
+    <div class="flash-card">
+        <div class="card-header">Anomalies Principales</div>
+        <div class="card-content">
+            <ul>
+                <li><span class="highlight">Pityriasis</span> : Présence de squames sèches</li>
+                <li><span class="highlight">Séborrhée</span> : État anormalement gras</li>
+                <li><span class="highlight">Dermite séborrhéique</span> : Inflammation + séborrhée</li>
+                <li><span class="highlight">Pityriasis stéatoïde</span> : Squames grasses</li>
+                <li><span class="highlight">Teigne</span> : Mycose (dermatophytose)</li>
+                <li><span class="highlight">Hyperhidrose</span> : Sudation excessive</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
