@@ -523,22 +523,36 @@
         let currentQuestions = [];
         let currentIndex = 0;
         let score = 0;
+        let questionsToReview = [];
 
         function startQuiz(category) {
             currentQuestions = quizData[category];
             currentIndex = 0;
             score = 0;
+            questionsToReview = [];
             document.getElementById('score').textContent = score;
             document.getElementById('total').textContent = currentQuestions.length;
             showQuestion();
         }
 
         function showQuestion() {
+            if (currentIndex >= currentQuestions.length && questionsToReview.length > 0) {
+                document.getElementById('quiz-area').innerHTML = `
+                    <div class="question-header">Révision des questions difficiles</div>
+                    <div class="question-content">
+                        <p>Vous avez ${questionsToReview.length} question(s) à revoir</p>
+                        <button class="quiz-button" onclick="startReview()">Commencer la révision</button>
+                    </div>
+                `;
+                return;
+            }
+            
             if (currentIndex >= currentQuestions.length) {
                 document.getElementById('quiz-area').innerHTML = `
                     <div class="question-header">Quiz terminé !</div>
                     <div class="question-content">
                         <p>Votre score final : ${score}/${currentQuestions.length}</p>
+                        <p>Félicitations ! Vous avez maîtrisé toutes les questions.</p>
                     </div>
                 `;
                 return;
@@ -558,9 +572,7 @@
                 </div>
             `;
 
-            // Ajouter un événement de clic pour afficher la réponse
             document.getElementById('quiz-area').addEventListener('click', function(event) {
-                // Ne pas déclencher si on clique sur les boutons
                 if (event.target.tagName !== 'BUTTON') {
                     document.getElementById('answer-area').style.display = 'block';
                 }
@@ -568,11 +580,23 @@
         }
 
         function checkAnswer(correct) {
+            const currentQuestion = currentQuestions[currentIndex];
+            
             if (correct) {
                 score++;
                 document.getElementById('score').textContent = score;
+            } else {
+                questionsToReview.push(currentQuestion);
             }
+            
             currentIndex++;
+            showQuestion();
+        }
+
+        function startReview() {
+            currentQuestions = [...questionsToReview];
+            questionsToReview = [];
+            currentIndex = 0;
             showQuestion();
         }
     </script>
