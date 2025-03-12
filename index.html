@@ -90,6 +90,91 @@
             margin: 10px 0;
             border-radius: 5px;
         }
+
+        /* Styles pour le système de quiz - REFAIT */
+        .quiz-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .quiz-button {
+            padding: 15px 25px;
+            background-color: #6a1b9a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .quiz-button:hover {
+            background-color: #9c27b0;
+        }
+
+        .score {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question-header {
+            background-color: #f0e6f5;
+            color: #6a1b9a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #6a1b9a;
+        }
+
+        .question-content {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.1em;
+        }
+
+        .click-info {
+            color: #666;
+            font-size: 0.9em;
+            font-style: italic;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .answer-content {
+            white-space: pre-line;
+            text-align: left;
+            padding: 15px;
+            font-size: 1.1em;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        .mode-revision-title {
+            text-align: center;
+            color: #6a1b9a;
+            margin: 30px 0 15px 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -344,5 +429,152 @@
             </ul>
         </div>
     </div>
+
+    <!-- Système de Quiz -->
+    <h2 class="mode-revision-title">MODE RÉVISION</h2>
+    
+    <div class="quiz-container">
+        <div class="quiz-buttons">
+            <button class="quiz-button" onclick="startQuiz('structure')">Structure du Cheveu</button>
+            <button class="quiz-button" onclick="startQuiz('cellules')">Cellules</button>
+            <button class="quiz-button" onclick="startQuiz('shampoings')">Shampoings</button>
+            <button class="quiz-button" onclick="startQuiz('tensioactifs')">Tensioactifs</button>
+        </div>
+        <div class="score">Score: <span id="score">0</span> / <span id="total">0</span></div>
+        <div id="quiz-area"></div>
+    </div>
+
+    <script>
+        const quizData = {
+            structure: [
+                {
+                    question: "Qu'est-ce que le follicule pileux ?",
+                    answer: "Une invagination tubulaire de l'épiderme dans le derme qui contient la racine du poil ou du cheveu"
+                },
+                {
+                    question: "Citez les 3 gaines du follicule pileux",
+                    answer: "1. Gaine épithéliale externe (GEE)\n2. Gaine épithéliale interne (GEI)\n3. Gaine conjonctive"
+                },
+                {
+                    question: "Quelles sont les différentes parties du follicule pileux ?",
+                    answer: "1. Stratum corneum\n2. Épiderme\n3. Derme\n4. Poil\n5. Follicule pileux\n6. Glande sébacée\n7. Artère et Veine\n8. Bulbe pileux\n9. Papille"
+                },
+                {
+                    question: "Quelle est la composition chimique de la kératine ?",
+                    answer: "- Carbone : 50 à 60%\n- Oxygène : 25 à 30%\n- Azote : 8 à 12%\n- Hydrogène : 4 à 5%\n- Soufre : 2 à 4%"
+                }
+            ],
+            cellules: [
+                {
+                    question: "Quelles sont les 3 étapes de transformation des cellules matricielles ?",
+                    answer: "1. Division cellulaire\n2. Différenciation\n3. Kératinisation"
+                },
+                {
+                    question: "Quel est le rôle des mélanocytes ?",
+                    answer: "Production de la mélanine, pigment responsable de la couleur des cheveux"
+                },
+                {
+                    question: "Quels sont les différents types de cellules qui élaborent le cheveu ?",
+                    answer: "1. Cellules cuticulaires : élaborent la cuticule\n2. Cellules corticales : élaborent le cortex\n3. Cellules médullaires : élaborent la moelle"
+                }
+            ],
+            shampoings: [
+                {
+                    question: "Quelles sont les caractéristiques du shampoing neutre ?",
+                    answer: "- pH : Neutre (7)\n- Forme : Généralement liquide\n- Usage : Entretien courant\n- Formulation : Généralement liquide"
+                },
+                {
+                    question: "Quelles sont les caractéristiques du shampoing spécifique ?",
+                    answer: "- pH : Variable (5 à 7)\n- Forme : Généralement crèmeuse\n- Usage : Types de cheveux spécifiques\n- Formulation : Tensio-actifs amphotères (+/-)"
+                },
+                {
+                    question: "Quelles sont les caractéristiques du shampoing traitant ?",
+                    answer: "- pH : Acide (5 à 6)\n- Forme : Généralement fluide en gel\n- Usage : Traitement des anomalies\n- Formulation : Tensio-actifs cationiques (+)"
+                },
+                {
+                    question: "Citez les 5 types d'agents dans un shampoing",
+                    answer: "1. Agents lavants : emprisonnent, décollent et entraînent les salissures\n2. Agents solvants : règlent la concentration et dissolvent les agents actifs\n3. Agents émulsionnants : évitent la séparation des composants gras et aqueux\n4. Agents conditionneurs : facilitent démêlage, coiffage et diminuent l'électricité statique\n5. Agents d'addition : améliorent caractéristiques et présentation"
+                }
+            ],
+            tensioactifs: [
+                {
+                    question: "Quelles sont les 4 propriétés des tensioactifs ?",
+                    answer: "1. Moussante : capacité à se mélanger à l'air\n2. Mouillante : imprègne la surface de contact\n3. Antiredéposition : empêche les particules de se redéposer\n4. Émulsionnante : mélange les substances non miscibles"
+                },
+                {
+                    question: "Décrivez la structure d'une molécule tensioactive",
+                    answer: "- Tête polaire : Partie hydrophile (aime l'eau)\n- Queue apolaire : Partie lipophile (aime les corps gras)"
+                },
+                {
+                    question: "Quelles sont les caractéristiques du tensioactif anionique (-) ?",
+                    answer: "Inconvénients :\n- Rend les cheveux ternes\n- Rend les cheveux difficiles à démêler\n- Rend les cheveux électriques\n\nUtilisé dans : Shampoings doux ou neutres"
+                },
+                {
+                    question: "Quelles sont les caractéristiques du tensioactif cationique (+) ?",
+                    answer: "Avantages :\n- Apporte douceur\n- Apporte souplesse\n- Apporte brillance\n- Facilite le démêlage\n\nUtilisé dans : Shampoings traitants"
+                },
+                {
+                    question: "Quelles sont les caractéristiques du tensioactif amphotère (+ et -) ?",
+                    answer: "Avantages :\n- Bien toléré par la peau\n- Bien toléré par les cheveux\n- Ne pique pas les yeux\n\nUtilisé dans : Shampoings spécifiques"
+                }
+            ]
+        };
+
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let score = 0;
+
+        function startQuiz(category) {
+            currentQuestions = quizData[category];
+            currentIndex = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            document.getElementById('total').textContent = currentQuestions.length;
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentIndex >= currentQuestions.length) {
+                document.getElementById('quiz-area').innerHTML = `
+                    <div class="question-header">Quiz terminé !</div>
+                    <div class="question-content">
+                        <p>Votre score final : ${score}/${currentQuestions.length}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const question = currentQuestions[currentIndex];
+            document.getElementById('quiz-area').innerHTML = `
+                <div class="question-header">Question ${currentIndex + 1}</div>
+                <div class="question-content">${question.question}</div>
+                <div class="click-info">(Cliquez pour voir la réponse)</div>
+                <div id="answer-area" style="display: none;">
+                    <div class="answer-content">${question.answer}</div>
+                    <div class="quiz-buttons">
+                        <button class="quiz-button" onclick="checkAnswer(true)">Je savais</button>
+                        <button class="quiz-button" onclick="checkAnswer(false)">Je ne savais pas</button>
+                    </div>
+                </div>
+            `;
+
+            // Ajouter un événement de clic pour afficher la réponse
+            document.getElementById('quiz-area').addEventListener('click', function(event) {
+                // Ne pas déclencher si on clique sur les boutons
+                if (event.target.tagName !== 'BUTTON') {
+                    document.getElementById('answer-area').style.display = 'block';
+                }
+            });
+        }
+
+        function checkAnswer(correct) {
+            if (correct) {
+                score++;
+                document.getElementById('score').textContent = score;
+            }
+            currentIndex++;
+            showQuestion();
+        }
+    </script>
 </body>
 </html> 
